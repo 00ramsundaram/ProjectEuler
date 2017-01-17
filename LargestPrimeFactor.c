@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-#define PRIMEFACTORFOR 600851475143
+#define PRIMEFACTORFOR 13195 /*600851475143*/
 
 int isNumberPrime (long numberToCheck){
 	long denominator = 2;
@@ -23,6 +23,21 @@ int main (void){
 		currentLargestPrimeDivisor = 2;
 	}
 	else {
+		while (1){
+			if (isNumberPrime(primeDenominator)){
+				if ( 0 == (numerator % primeDenominator)){
+					currentLargestPrimeDivisor = primeDenominator;
+					numerator /= primeDenominator;
+					//primeDenominator = 3;
+					if (1 == numerator) {
+						break;
+					}
+				}
+			}
+			primeDenominator +=2;
+		}
+		printf("Largest Prime Divisor of %lu = %lu\n",PRIMEFACTORFOR,currentLargestPrimeDivisor);
+		/*
 		while (numerator >= currentLargestPrimeDivisor){
 		// find the largest prime factor of 
 			while ( 0 != (numerator % primeDenominator)){
@@ -38,6 +53,7 @@ int main (void){
 			}
 
 		}
+		*/
 
 	}
 }
